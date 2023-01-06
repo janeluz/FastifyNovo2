@@ -1,0 +1,7 @@
+import { CreateSessionUseCase } from "./createSessionUseCase";
+declare class SessionController {
+    private createSessionUseCase;
+    constructor(createSessionUseCase: CreateSessionUseCase);
+    handle(request: any, reply: any): Promise<any>;
+}
+export { SessionController };
