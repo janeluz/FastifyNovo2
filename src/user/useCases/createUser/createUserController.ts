@@ -16,9 +16,6 @@ class CreateUserController {
     });
     const {name,email,password,confirmPassword,avatar,isAdmin,departament} = addUser.parse(request.body);
       try{
-             if(password !== confirmPassword){
-                throw new Error('Password and Confirm Password must be the same');
-              }
         const newUser = await this.createuserUseCase.execute({name, email,password,confirmPassword,avatar,isAdmin,departament});
         return reply.code(201).send(newUser);
       } catch(error: any) {

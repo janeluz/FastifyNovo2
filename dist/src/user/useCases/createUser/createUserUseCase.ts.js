@@ -8,8 +8,8 @@ class CreateUserUseCase {
         this.usersRepository = usersRepository;
     }
     async execute({ name, email, password, confirmPassword, avatar, isAdmin, departament }) {
-        const usersAlreadyExists = this.usersRepository.findByEmail(email);
-        if (await usersAlreadyExists) {
+        const usersAlreadyExists = await this.usersRepository.findByEmail(email);
+        if (usersAlreadyExists) {
             throw new Error(" user Already exists!");
         }
         if (password != confirmPassword) {

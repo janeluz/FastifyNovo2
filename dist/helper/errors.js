@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UnauthorizedError = exports.NotFoundError = exports.BadRequestError = exports.ApiError = void 0;
 class ApiError extends Error {
     statusCode;
+    static message;
     constructor(message, statusCode) {
         super(message);
         this.statusCode = statusCode;

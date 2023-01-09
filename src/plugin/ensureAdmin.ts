@@ -5,7 +5,7 @@ export async function ensureAdmin(
   reply:any,
   done:any,
 ){
-  const { id } = request.user;
+  const  {id}  = request.user;
 
   const usersRepository = new UsersRepository();
   const user = await usersRepository.findById(id);

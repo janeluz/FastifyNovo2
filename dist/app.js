@@ -8,14 +8,15 @@ const fastify_1 = __importDefault(require("fastify"));
 const postgres_1 = __importDefault(require("@fastify/postgres"));
 const userRoutes_1 = require("./src/routes/userRoutes");
 const loginRoutes_1 = require("./src/routes/loginRoutes");
-const tasksRoutes_1 = require("./tasks/tasksRoutes");
-const ensureAuthenticated_1 = __importDefault(require("src/plugin/ensureAuthenticated"));
+const tasksRoutes_1 = require("./src/task/tasksRoutes");
+// import { indexRoutes } from "./tasks";
 const app = (0, fastify_1.default)({ logger: true });
 exports.app = app;
 app.register(postgres_1.default, {
     connectionString: 'postgres://jane:271219@localhost:5432/fastifydb'
 });
+// app.register(indexRoutes);
+// app.register(ensureAuthenticated);
 app.register(userRoutes_1.usersRoutes, { prefix: '/users' });
 app.register(loginRoutes_1.loginRoutes, { prefix: '/login' });
 app.register(tasksRoutes_1.tasksRoutes, { prefix: '/tasks' });
-app.register(ensureAuthenticated_1.default);

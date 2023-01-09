@@ -1,5 +1,6 @@
 export declare class ApiError extends Error {
     readonly statusCode: number;
+    static message: string;
     constructor(message: string, statusCode: number);
 }
 export declare class BadRequestError extends ApiError {

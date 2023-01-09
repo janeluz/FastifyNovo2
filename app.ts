@@ -1,27 +1,32 @@
 
-import fastify, { FastifyInstance } from "fastify";
+import Fastify, { FastifyInstance } from "fastify";
 import fastifyPostgres from "@fastify/postgres";
 import { usersRoutes } from "./src/routes/userRoutes";
 import { loginRoutes } from "./src/routes/loginRoutes";
-import { tasksRoutes } from "./tasks/tasksRoutes";
-import { ensureAuthenticated } from "./src/plugin/ensureAuthenticated";
-// import ensureAuthenticated from "./src/plugin/ensureAuthenticated";
+import { tasksRoutes } from "./src/task/tasksRoutes";
+
+// import { indexRoutes } from "./tasks";
 
 
 
 
 
-const app:FastifyInstance = fastify({logger:true});
+const app: FastifyInstance = Fastify({ logger: true });
 
 
-app.register(fastifyPostgres,{
-    connectionString: 'postgres://jane:271219@localhost:5432/fastifydb'     
+app.register(fastifyPostgres, {
+    connectionString: 'postgres://jane:271219@localhost:5432/fastifydb'
 });
-app.register(usersRoutes,{prefix:'/users'});
-app.register(loginRoutes,{prefix:'/login'});
-app.register(tasksRoutes,{prefix:'/tasks'});
+
+// app.register(indexRoutes);
+// app.register(ensureAuthenticated);
+app.register(usersRoutes, { prefix: '/users' });
+app.register(loginRoutes, { prefix: '/login' });
+app.register(tasksRoutes, { prefix: '/tasks' });
+
+
+// app.register(contentParser);
 
 
 
-
-export{ app };
+export { app };
