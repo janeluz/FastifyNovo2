@@ -1,16 +1,16 @@
-import { UsersRepository } from "../repositories/usersRepositories";
+import { UsersRepository } from "../user/repositories/usersRepository";
 
 export async function ensureAdmin(
   request: any,
-  reply:any,
-  done:any,
-){
-  const  {id}  = request.user;
+  reply: any,
+  done: any,
+) {
+  const { id } = request.user;
 
   const usersRepository = new UsersRepository();
   const user = await usersRepository.findById(id);
 
-  if(!user.isAdmin) {
+  if (!user.isAdmin) {
     throw new Error("User isn't admin!");
   }
 

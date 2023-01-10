@@ -46,6 +46,18 @@ declare const addUser: {
             password: {
                 type: string;
             };
+            confirmPassword: {
+                type: string;
+            };
+            avatar: {
+                type: string;
+            };
+            isAdmin: {
+                type: string;
+            };
+            departament: {
+                type: string;
+            };
         };
     };
     response: {

@@ -24,13 +24,15 @@ exports.allUsers = allUsers;
 const addUser = {
     body: {
         type: 'object',
-        required: ['name', 'email', 'password', 'confirmPassword', 'departament'],
+        required: ['name', 'email', 'password', 'confirmPassword', 'avatar', 'isAdmin', 'departament'],
         properties: {
             name: { type: 'string' },
             email: { type: 'string' },
             password: { type: 'string' },
-            // confirmPassword:{type:'string'},
-            // departament: {type: 'string'},
+            confirmPassword: { type: 'string' },
+            avatar: { type: 'string' },
+            isAdmin: { type: 'boolean' },
+            departament: { type: 'enum' },
         }
     },
     response: {

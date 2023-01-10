@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersRepositoryInMemory = void 0;
-const userModel_1 = require("../../src/user/dto/userModel");
+const userModel_1 = require("../dto/userModel");
 class UsersRepositoryInMemory {
     users = [];
     async create({ name, email, password, isAdmin, departament, avatar }) {

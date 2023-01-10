@@ -1,4 +1,4 @@
-import { UsersRepository } from "../repositories/usersRepositories";
+import { UsersRepository } from "../user/repositories/usersRepository";
 interface IResponse {
     user: {
         name: string;

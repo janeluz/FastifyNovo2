@@ -1,7 +1,7 @@
 import { compare } from "bcryptjs";
 import auth from "../config/auth";
 import { sign } from "jsonwebtoken";
-import { UsersRepository } from "../repositories/usersRepositories";
+import { UsersRepository } from "../user/repositories/usersRepository";
 
 
 interface IResponse {
@@ -25,12 +25,12 @@ class CreateSessionUseCase {
 
         const passwordMatch = await compare(password, user.password);
         console.log("testee de senhas", passwordMatch)
-        
+
         if (!passwordMatch) {
             throw new Error('Email or Password incorrect');
         }
 
-        const token = sign({email }, secretToken, {
+        const token = sign({ email }, secretToken, {
             subject: user.id,
             expiresIn: expiresInToken,
         });
@@ -41,9 +41,9 @@ class CreateSessionUseCase {
             },
             token,
         };
-       
+
         return tokenReturn;
-        
+
     }
 }
 

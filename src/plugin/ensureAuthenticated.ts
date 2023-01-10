@@ -1,7 +1,7 @@
 import { app } from "app";
 import { FastifyRequest } from "fastify";
 import { verify } from "jsonwebtoken";
-import { UsersRepository } from "../repositories/usersRepositories";
+import { UsersRepository } from "../user/repositories/usersRepository";
 
 
 interface IPayload {
@@ -9,14 +9,14 @@ interface IPayload {
 }
 
 // app.addHook('preHandler',(request: any, reply:any, done: any)=>{
-  
+
 export async function ensureAuthenticated(
   request: any,
   reply: any,
   done: any,
- ) {
+) {
 
-  const authHeader =  request.headers.authorization;
+  const authHeader = request.headers.authorization;
 
   if (!authHeader) {
     throw new Error('token missing');
@@ -33,18 +33,18 @@ export async function ensureAuthenticated(
     ) as IPayload;
 
     const usersRepository = new UsersRepository();
-    const user =  usersRepository.findById(id);
+    const user = usersRepository.findById(id);
 
     if (!user) {
       throw new Error('User does not exists!');
     }
     request.user = {
-     id: id,
+      id: id,
     };
 
     return done();
   } catch (error) {
     throw new Error('invalid token');
   }
-  
+
 }

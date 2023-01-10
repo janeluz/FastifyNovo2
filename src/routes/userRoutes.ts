@@ -1,10 +1,7 @@
 import listUserController from "../../src/user/useCases/listUser";
 import createUserController from "../../src/user/useCases/createUser";
 import listUserByIdController from "../../src/user/useCases/listById";
-import { ensureAuthenticated } from "../../src/plugin/ensureAuthenticated";
-import multer from "fastify-multer";
-import upload from "../plugin/upload";
-import uploadAvatarController from "../../src/user/useCases/updateUserAvatar";
+import updateUserController from "../../src/user/useCases/updateUser";
 
 // import upload from "../../src/config/upload";
 
@@ -28,7 +25,10 @@ app.get('/:id', async(request:any, reply: any) => {
     return listUserByIdController().handle(request,reply);
 });
 
-// app.path('/avatar', uploadAvatar.single('avatar'),(request:any, reply:any) => {
+app.put('/:id',async (request:any, reply:any) => {
+    return updateUserController().handle(request,reply);
+})
+// app.path('/avatar/:id', uploadAvatar.single('avatar'),(request:any, reply:any) => {
 //     return uploadAvatarController().handle(request,reply);
 // });
 

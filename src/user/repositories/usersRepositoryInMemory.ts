@@ -1,9 +1,10 @@
-import { User } from "../../src/user/dto/userModel";
-import { ICreateUserDTO, IUsersRepository } from "../../src/user/dto/ICreateDTO";
+import { User } from "../dto/userModel";
+import { ICreateUserDTO, IUsersRepository } from "../dto/ICreateDTO";
 
 
 
 class UsersRepositoryInMemory implements IUsersRepository {
+
   users: User[] = [];
 
   async create({
@@ -14,7 +15,7 @@ class UsersRepositoryInMemory implements IUsersRepository {
     departament,
     avatar
   }: ICreateUserDTO): Promise<User> {
-    const user = new User(name, email, password,isAdmin, departament as any ,avatar as any);
+    const user = new User(name, email, password, isAdmin, departament as any, avatar as any);
 
     Object.assign(user, {
       name,
@@ -39,12 +40,15 @@ class UsersRepositoryInMemory implements IUsersRepository {
   }
 
   async findById(id: string): Promise<User> {
-   const user = this.users.find((user) => user.id === id);
+    const user = this.users.find((user) => user.id === id);
     return user as User;
   }
 
   async listAllUser(): Promise<User[]> {
     return this.users;
+  }
+  update(id: string, body: any): Promise<User> {
+    throw new Error("Method not implemented.");
   }
 }
 

@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const createUserUseCase_ts_1 = require("./createUserUseCase.ts");
-const usersRepositoryInMemory_1 = require("../../../repositories/usersRepositoryInMemory");
+const usersRepositoryInMemory_1 = require("../../repositories/usersRepositoryInMemory");
 let createUserUseCase;
 let usersRepositoryInMemory;
 describe('Create User', () => {

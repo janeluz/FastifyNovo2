@@ -1861,6 +1861,16 @@ dot-case@^3.0.4:
     no-case "^3.0.4"
     tslib "^2.0.3"
 
+dotenv-expand@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/dotenv-expand/-/dotenv-expand-5.1.0.tgz#3fbaf020bfd794884072ea26b1e9791d45a629f0"
+  integrity sha512-YXQl1DSa4/PQyRfgrv6aoNjhasp/p4qs9FjJ4q4cQk+8m4r6k4ZSiEyytKG8f8W9gi8WsQtIObNmKd+tMzNTmA==
+
+dotenv@^11.0.0:
+  version "11.0.0"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-11.0.0.tgz#ee37feddf8ada6d348a79e198312d4a8abfd1c1e"
+  integrity sha512-Fp/b504Y5W+e+FpCxTFMUZ7ZEQkQYF0rx+KZtmwixJxGQbLHrhCwo3FjZgNC8vIfrSi29PABNbMoCGD9YoiXbQ==
+
 dotenv@^16.0.3:
   version "16.0.3"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.0.3.tgz#115aec42bac5053db3c456db30cc243a5a836a07"
@@ -1918,6 +1928,15 @@ end-of-stream@^1.4.4:
   integrity sha512-+uw1inIHVPQoaVuHzRyXd21icM+cnt4CzD5rW+NC1wjOUSTOs+Te7FOv7AhN7vS9x/oIyhLP5PR1H+phQAHu5Q==
   dependencies:
     once "^1.4.0"
+
+env-schema@^3.0.1:
+  version "3.5.2"
+  resolved "https://registry.yarnpkg.com/env-schema/-/env-schema-3.5.2.tgz#c7aec9bef4256d1fd621f4ad275c6bdc472003be"
+  integrity sha512-mSCYvxQLrJ3Z641CpCSvU2UIFPjDNqZ9yUfqWdx2FMXfccWtYrJEa+pR9mc3YyINvmnlXdbmD5fBx1NSlipMfw==
+  dependencies:
+    ajv "^8.0.0"
+    dotenv "^11.0.0"
+    dotenv-expand "^5.1.0"
 
 error-ex@^1.3.1:
   version "1.3.2"
@@ -2338,6 +2357,22 @@ fastify-bcrypt@^1.0.1:
   dependencies:
     bcryptjs "^2.4.3"
     fastify-plugin "^2.3.1"
+
+"fastify-env-deprecated@npm:fastify-env@2.1.1":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/fastify-env/-/fastify-env-2.1.1.tgz#443cc8f9b443320bfd9330975606fdbb2ba2f799"
+  integrity sha512-5IyYR+d+0/hwae/PpC6oWb+hlMpBqG1MuWWTEbFR2uzGhDXX/rCp4gdBrodt7SndOyvVlF+Z8QZ0fGlXPWtIOw==
+  dependencies:
+    env-schema "^3.0.1"
+    fastify-plugin "^3.0.0"
+
+fastify-env@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/fastify-env/-/fastify-env-2.2.0.tgz#93ffbda357abdd3a9e3ae647a5f5fb5ea4cb8dac"
+  integrity sha512-WlNsLv+SfIyYsAVozdA2dby09cz7nMlOHDNWKlwb5eXIkg9USyYEAM5g371N+KMsc7hIB0gxn4HiHU9XGafAdA==
+  dependencies:
+    fastify-env-deprecated "npm:fastify-env@2.1.1"
+    process-warning "^1.0.0"
 
 fastify-error@^0.3.0:
   version "0.3.1"

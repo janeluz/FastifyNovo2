@@ -17,6 +17,7 @@ interface ICreateUserDTO {
 
 
 interface IUsersRepository {
+  update(id: string, body: any):Promise<User>;
   findById(id: string): Promise<User>;
   findByEmail(email: string):Promise<User>;
   create({name, email,password,isAdmin,departament,avatar}: ICreateUserDTO): Promise<User>;

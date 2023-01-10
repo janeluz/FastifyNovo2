@@ -1,5 +1,5 @@
-import { ICreateUserDTO, IUsersRepository } from "../user/dto/ICreateDTO";
-import { User } from "../user/dto/userModel";
+import { ICreateUserDTO, IUsersRepository } from "../dto/ICreateDTO";
+import { User } from "../dto/userModel";
 declare class UsersRepository implements IUsersRepository {
     constructor();
     findById(id: string): Promise<User>;

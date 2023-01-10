@@ -1,5 +1,5 @@
-import { User } from "../../src/user/dto/userModel";
-import { ICreateUserDTO, IUsersRepository } from "../../src/user/dto/ICreateDTO";
+import { User } from "../dto/userModel";
+import { ICreateUserDTO, IUsersRepository } from "../dto/ICreateDTO";
 declare class UsersRepositoryInMemory implements IUsersRepository {
     users: User[];
     create({ name, email, password, isAdmin, departament, avatar }: ICreateUserDTO): Promise<User>;

@@ -1,11 +1,11 @@
 import { CreateUserUseCase } from "./createUserUseCase.ts";
-import { UsersRepositoryInMemory } from "../../../repositories/usersRepositoryInMemory";
+import { UsersRepositoryInMemory } from "../../repositories/usersRepositoryInMemory";
 
 let createUserUseCase: CreateUserUseCase;
-let usersRepositoryInMemory : UsersRepositoryInMemory;
+let usersRepositoryInMemory: UsersRepositoryInMemory;
 
 describe('Create User', () => {
-  beforeEach(()=> {
+  beforeEach(() => {
     usersRepositoryInMemory = new UsersRepositoryInMemory();
     createUserUseCase = new CreateUserUseCase(usersRepositoryInMemory);
 
@@ -13,11 +13,11 @@ describe('Create User', () => {
   it('should be able to create a new user', async () => {
     const user = await createUserUseCase.execute({
       name: 'testee',
-      email:'teste@gmail.com',
+      email: 'teste@gmail.com',
       password: '1234565',
       confirmPassword: '123456',
       isAdmin: false,
-      departament:'development',
+      departament: 'development',
       avatar: 'avatar',
       created_at: new Date(),
       updated_at: new Date()

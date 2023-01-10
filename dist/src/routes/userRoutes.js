@@ -7,6 +7,7 @@ exports.usersRoutes = void 0;
 const listUser_1 = __importDefault(require("../../src/user/useCases/listUser"));
 const createUser_1 = __importDefault(require("../../src/user/useCases/createUser"));
 const listById_1 = __importDefault(require("../../src/user/useCases/listById"));
+const updateUser_1 = __importDefault(require("../../src/user/useCases/updateUser"));
 // import upload from "../../src/config/upload";
 // import { ensureAuthenticated } from "../../src/plugin/ensureAuthenticated";
 async function usersRoutes(app, opts, done) {
@@ -20,7 +21,10 @@ async function usersRoutes(app, opts, done) {
     app.get('/:id', async (request, reply) => {
         return (0, listById_1.default)().handle(request, reply);
     });
-    // app.path('/avatar', uploadAvatar.single('avatar'),(request:any, reply:any) => {
+    app.put('/:id', async (request, reply) => {
+        return (0, updateUser_1.default)().handle(request, reply);
+    });
+    // app.path('/avatar/:id', uploadAvatar.single('avatar'),(request:any, reply:any) => {
     //     return uploadAvatarController().handle(request,reply);
     // });
     done();

@@ -10,7 +10,7 @@
     "start": "nodemon server.ts",
     "find-deadcode": "ts-prune",
     "test": "jest",
-    "seed":""
+    "seed": "ts-node-dev tsconfig-paths/register src/seed"
   },
   "dependencies": {
     "@fastify/auth": "^4.2.0",
@@ -27,6 +27,7 @@
     "eslint-plugin-import": "^2.25.2",
     "fastify": "^4.10.2",
     "fastify-bcrypt": "^1.0.1",
+    "fastify-env": "^2.2.0",
     "fastify-multer": "^2.0.3",
     "fastify-multipart": "^5.4.0",
     "fastify-plugin": "^4.3.0",
