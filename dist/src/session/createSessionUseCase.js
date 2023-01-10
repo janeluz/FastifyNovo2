@@ -13,12 +13,15 @@ class CreateSessionUseCase {
         this.usersRepository = usersRepository;
     }
     async execute(email, password) {
+        console.log("testeeeee", email, password);
         const user = await this.usersRepository.findByEmail(email);
+        console.log("testeeeee2", user);
         if (!user) {
             throw new Error('Email or Password incorrect');
         }
         const { secretToken, expiresInToken } = auth_1.default;
         const passwordMatch = await (0, bcryptjs_1.compare)(password, user.password);
+        console.log("testee de senhas", passwordMatch);
         if (!passwordMatch) {
             throw new Error('Email or Password incorrect');
         }

@@ -35,13 +35,13 @@ class UsersRepository {
         const query = (`INSERT INTO users(id,name,email,password,avatar,isAdmin,departament,created_at,updated_at)
             VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9)`);
         const values = [id, name, email, password, avatar, isAdmin, departament, created_at, updated_at];
-        const { rows } = await client.query(query, values);
-        return rows;
+        const user = await client.query(query, values);
+        return user;
     }
     async findByEmail(email) {
         const client = await app_1.app.pg.connect();
-        const user = await client.query('SELECT * FROM users WHERE email = $1', [email]);
-        return user;
+        const { rows } = await client.query(`SELECT * FROM users where email = $1`, [email]);
+        return rows[0];
     }
     async listAllUser() {
         const client = app_1.app.pg.connect();

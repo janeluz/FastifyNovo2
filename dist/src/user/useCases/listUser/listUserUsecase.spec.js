@@ -1,8 +1,10 @@
 "use strict";
+// import { UsersRepositoryInMemory } from "../../../../src/repositories/usersRepositoryInMemory";
+// import listUsersUseCase, { ListUsersUseCase } from "./listUsersUseCase";
 // describe("List Users", () => {
 //     beforeEach(()=> {
-//       usersRepositoryInMemory = new UsersRepositoryInMemory();
-//       listUsersUseCase = new ListUsersUseCase(usersRepositoryInMemory);
+//      let  usersRepositoryInMemory = new UsersRepositoryInMemory();
+//     let   listUsersUseCase = new ListUsersUseCase(usersRepositoryInMemory);
 //     });
 //     it("should be able to list all available cars", async () => {
 //       const user = await usersRepositoryInMemory.create({

@@ -45,16 +45,17 @@ class UsersRepository implements IUsersRepository {
             VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9)`)
      const  values = [id,name, email, password, avatar, isAdmin, departament,created_at,updated_at]
 
-        const { rows}= await client.query(query,values)
-        return rows as any;
+        const user = await client.query(query,values)
+        return user as any;
     
   }
   async findByEmail(email: string): Promise<User> {
     const client = await app.pg.connect();
 
-    const user = await client.query('SELECT * FROM users WHERE email = $1',[email])
-       return user as any;
+    const {rows} = await client.query(`SELECT * FROM users where email = $1`,[email]);
 
+    return rows[0] as any;  
+    
   }
   async listAllUser(): Promise<User[]> {
     const client = app.pg.connect();

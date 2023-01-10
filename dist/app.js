@@ -8,7 +8,7 @@ const fastify_1 = __importDefault(require("fastify"));
 const postgres_1 = __importDefault(require("@fastify/postgres"));
 const userRoutes_1 = require("./src/routes/userRoutes");
 const loginRoutes_1 = require("./src/routes/loginRoutes");
-const tasksRoutes_1 = require("./src/task/tasksRoutes");
+const tasksRoutes_1 = require("./src/routes/tasksRoutes");
 // import { indexRoutes } from "./tasks";
 const app = (0, fastify_1.default)({ logger: true });
 exports.app = app;

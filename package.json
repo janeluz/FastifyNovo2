@@ -9,7 +9,8 @@
     "build": "tsc -p tsconfig.json",
     "start": "nodemon server.ts",
     "find-deadcode": "ts-prune",
-    "test": "jest"
+    "test": "jest",
+    "seed":""
   },
   "dependencies": {
     "@fastify/auth": "^4.2.0",
@@ -27,6 +28,7 @@
     "fastify": "^4.10.2",
     "fastify-bcrypt": "^1.0.1",
     "fastify-multer": "^2.0.3",
+    "fastify-multipart": "^5.4.0",
     "fastify-plugin": "^4.3.0",
     "fastify-prettier": "^2.0.0",
     "fastify-zod": "^1.2.0",

@@ -1,14 +1,19 @@
 declare module 'fastify'{
     interface FastifyInstanceRequest {
-        authorization: any;
-        user: any;
+     
+      
 
     }
     interface Fastify {
         db: any;
     }
     interface FastifyRequest {
-        user: string;
+        user: {
+            id:string;
+        }
+        authorization:string;
+       
+       
     
 }
 type fastifyJwt = {

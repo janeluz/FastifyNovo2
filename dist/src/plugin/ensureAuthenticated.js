@@ -13,14 +13,14 @@ async function ensureAuthenticated(request, reply, done) {
     // [1] = numero token
     const [, token] = authHeader.split(' ');
     try {
-        const { sub: user_id } = (0, jsonwebtoken_1.verify)(token, '80db8eb05ec0a7b26a10db03cdd5dcc73');
+        const { sub: id } = (0, jsonwebtoken_1.verify)(token, '80db8eb05ec0a7b26a10db03cdd5dcc73');
         const usersRepository = new usersRepositories_1.UsersRepository();
-        const user = usersRepository.findById(user_id);
+        const user = usersRepository.findById(id);
         if (!user) {
             throw new Error('User does not exists!');
         }
         request.user = {
-            id: user_id,
+            id: id,
         };
         return done();
     }

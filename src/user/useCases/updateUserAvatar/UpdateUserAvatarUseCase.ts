@@ -3,7 +3,7 @@ import { deleteFile } from "../../../../helper/file";
 
 
 interface IRequest {
-  user_id: string;
+  id: string;
   avatar_file: string;
 }
 
@@ -13,8 +13,8 @@ class UpdateUserAvatarUseCase {
     private usersRepository: IUsersRepository,
   ) {}
 
-  async execute({ user_id, avatar_file }: IRequest): Promise<any> {
-    const user = await this.usersRepository.findById(user_id);
+  async execute({ id, avatar_file }: IRequest): Promise<any> {
+    const user = await this.usersRepository.findById(id);
 
     if (user.avatar) {
       await deleteFile(`./temp/avatar/${user.avatar}`);

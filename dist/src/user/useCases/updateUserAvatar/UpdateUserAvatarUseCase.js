@@ -7,8 +7,8 @@ class UpdateUserAvatarUseCase {
     constructor(usersRepository) {
         this.usersRepository = usersRepository;
     }
-    async execute({ user_id, avatar_file }) {
-        const user = await this.usersRepository.findById(user_id);
+    async execute({ id, avatar_file }) {
+        const user = await this.usersRepository.findById(id);
         if (user.avatar) {
             await (0, file_1.deleteFile)(`./temp/avatar/${user.avatar}`);
         }
