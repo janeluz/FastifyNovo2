@@ -1,7 +1,11 @@
+import { ensureAuthenticated } from "../../src/plugin/ensureAuthenticated";
+import multer from "fastify-multer"
+import upload from "../../src/plugin/upload";
 import listUserController from "../../src/user/useCases/listUser";
 import createUserController from "../../src/user/useCases/createUser";
 import listUserByIdController from "../../src/user/useCases/listById";
 import updateUserController from "../../src/user/useCases/updateUser";
+import updateUserAvatarController from "../../src/user/useCases/updateUserAvatar";
 
 // import upload from "../../src/config/upload";
 
@@ -9,7 +13,8 @@ import updateUserController from "../../src/user/useCases/updateUser";
 
 
 export async function usersRoutes(app:any,opts:any,done:any){
-    // const uploadAvatar = multer(upload);
+    app.register(multer.contentParser);
+    const uploadAvatar = multer(upload.upload('./tmp/avatar'));
 
 app.get('/', async(request: any, reply: any) => {
     return listUserController().handle(request,reply);
@@ -28,9 +33,9 @@ app.get('/:id', async(request:any, reply: any) => {
 app.put('/:id',async (request:any, reply:any) => {
     return updateUserController().handle(request,reply);
 })
-// app.path('/avatar/:id', uploadAvatar.single('avatar'),(request:any, reply:any) => {
-//     return uploadAvatarController().handle(request,reply);
-// });
+app.patch('/avatar',{preHandler:[ensureAuthenticated,uploadAvatar.single('avatar')]},(request:any, reply:any) => {
+    return updateUserAvatarController().handle(request,reply);
+});
 
 done();
 }

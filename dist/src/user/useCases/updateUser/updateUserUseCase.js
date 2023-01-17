@@ -7,12 +7,8 @@ class UpdateUserUseCase {
         this.usersRepository = usersRepository;
     }
     async execute(id, body) {
-        const user = await this.usersRepository.findById(id);
-        if (!user) {
-            throw new Error("User not found");
-        }
+        await this.usersRepository.findById(id);
         const updateUser = await this.usersRepository.update(id, body);
-        console.log('testeeeeeeeeeee', updateUser);
         return updateUser;
     }
 }

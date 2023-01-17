@@ -1,4 +1,4 @@
-import { UpdateUserAvatarUseCase } from "./UpdateUserAvatarUseCase";
+import { UpdateUserAvatarUseCase } from "./updateUserAvatarUseCase";
 declare class UpdateUserAvatarController {
     private updateUserAvatarUseCase;
     constructor(updateUserAvatarUseCase: UpdateUserAvatarUseCase);

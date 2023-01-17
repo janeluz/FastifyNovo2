@@ -8,6 +8,6 @@ declare class User {
     avatar?: string;
     created_at?: Date;
     update_at?: Date;
-    constructor(name: string, email: string, password: string, isAdmin: boolean, departament: ['development' | 'IA' | 'RPA'], avatar: string);
+    constructor(name: string, email: string, password: string, avatar: string, isAdmin: boolean, departament: ['development' | 'IA' | 'RPA']);
 }
 export { User };

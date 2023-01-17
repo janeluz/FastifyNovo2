@@ -13,6 +13,7 @@ class UpdateUserAvatarController {
             id: id,
             avatar_file,
         });
+        console.log('teste', user);
         return reply.status(204).send(user);
     }
 }

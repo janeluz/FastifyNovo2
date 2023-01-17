@@ -35,15 +35,16 @@ class UsersRepository implements IUsersRepository {
 
   }
 
-  async create({ name, email, password, avatar, isAdmin, departament }: ICreateUserDTO): Promise<User> {
+  async create({ name, email, password, isAdmin, departament }: ICreateUserDTO): Promise<User> {
     const client = await app.pg.connect();
     const id = uuidv4();
+    const avatar = null;
     const created_at = new Date();
     const updated_at = new Date();
 
     const query = (`INSERT INTO users(id,name,email,password,avatar,isAdmin,departament,created_at,updated_at)
             VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9)`)
-    const values = [id, name, email, password, avatar, isAdmin, departament, created_at, updated_at]
+    const values = [id, name, email, password,avatar,isAdmin,departament, created_at, updated_at]
 
     const user = await client.query(query, values)
     return user as any;

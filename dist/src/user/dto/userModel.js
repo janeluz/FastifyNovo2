@@ -12,13 +12,13 @@ class User {
     avatar;
     created_at;
     update_at;
-    constructor(name, email, password, isAdmin, departament, avatar) {
+    constructor(name, email, password, avatar, isAdmin, departament) {
         this.name = name;
         this.email = email;
         this.password = password;
+        this.avatar = avatar;
         this.isAdmin = isAdmin;
         this.departament = departament;
-        this.avatar = avatar;
         this.created_at = new Date();
         this.update_at = new Date();
         if (!this.id) {

@@ -11,11 +11,12 @@ class UsersRepositoryInMemory implements IUsersRepository {
     name,
     email,
     password,
+    avatar,
     isAdmin,
     departament,
-    avatar
+    
   }: ICreateUserDTO): Promise<User> {
-    const user = new User(name, email, password, isAdmin, departament as any, avatar as any);
+    const user = new User(name, email, password,avatar as any,isAdmin, departament as any);
 
     Object.assign(user, {
       name,

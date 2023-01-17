@@ -45,10 +45,10 @@ class TasksRepository {
         const task = await (await client).query('SELECT * FROM users WHERE name = $1', [name]);
         return task;
     }
-    async findByDone(done) {
+    async findByDone() {
         const client = app_1.app.pg.connect();
-        const task = await (await client).query(`SELECT * FROM tasks WHERE done = $1`, [done]);
-        return task;
+        const { rows } = await (await client).query(`SELECT * FROM tasks  ORDER BY done `);
+        return rows;
     }
     async update(id, body) {
         const client = await app_1.app.pg.connect();

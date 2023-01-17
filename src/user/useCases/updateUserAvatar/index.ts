@@ -1,6 +1,6 @@
 import { UsersRepository } from "../../repositories/usersRepository";
-import { UpdateUserAvatarController } from "./UpdateUserAvatarController";
-import { UpdateUserAvatarUseCase } from "./UpdateUserAvatarUseCase";
+import { UpdateUserAvatarController } from "./updateUserAvatarController";
+import { UpdateUserAvatarUseCase } from "./updateUserAvatarUseCase";
 
 export default () => {
     const usersRepository = new UsersRepository();

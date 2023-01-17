@@ -18,7 +18,7 @@ interface ITasksRepository {
   listAllTask(): Promise<Task[]>;
   findById(id: string): Promise<Task>;
   deleteById(id: string): Promise<void>;
-  findByDone(done: boolean): Promise<Task>;
+  findByDone(): Promise<Task[]>;
   update(id: string, body: any): Promise<Task>;
 
 }

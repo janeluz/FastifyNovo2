@@ -5,16 +5,6 @@ import { usersRoutes } from "./src/routes/userRoutes";
 import { loginRoutes } from "./src/routes/loginRoutes";
 import { tasksRoutes } from "./src/routes/tasksRoutes";
 
-import { ensureAuthenticated } from "./src/plugin/ensureAuthenticated";
-import upload from "src/plugin/upload";
-import multer from "fastify-multer/lib/lib/content-parser";
-import { Connection } from "pg";
-
-// import { indexRoutes } from "./tasks";
-
-
-
-
 
 const app: FastifyInstance = Fastify({ logger: true });
 
@@ -22,6 +12,11 @@ const app: FastifyInstance = Fastify({ logger: true });
 app.register(fastifyPostgres, {
     connectionString: 'postgres://jane:271219@localhost:5432/fastifydb'
 });
+
+app.register(fastifyPostgres,{
+    name:"test",
+    connectionString: 'postgres://process.env.POSTGRES_USER:process.env.POSTGRES_PASSWORD@process.env.POSTGRES_SERVICE:process.env.POSTGRES_PORT/process.env.NODE_ENV'
+})
 
 // app.register(indexRoutes);
 // app.register(ensureAuthenticated);

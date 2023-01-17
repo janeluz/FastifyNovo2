@@ -16,7 +16,7 @@ class CreateTaskUseCase {
     }
 
     const task = this.taskRepository.create({ name, user_id, description, done });
-    console.log('testee,', task);
+   
 
     return task;
 

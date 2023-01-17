@@ -4,8 +4,8 @@ exports.UsersRepositoryInMemory = void 0;
 const userModel_1 = require("../dto/userModel");
 class UsersRepositoryInMemory {
     users = [];
-    async create({ name, email, password, isAdmin, departament, avatar }) {
-        const user = new userModel_1.User(name, email, password, isAdmin, departament, avatar);
+    async create({ name, email, password, avatar, isAdmin, departament, }) {
+        const user = new userModel_1.User(name, email, password, avatar, isAdmin, departament);
         Object.assign(user, {
             name,
             email,

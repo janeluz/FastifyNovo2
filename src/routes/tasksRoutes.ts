@@ -4,6 +4,7 @@ import deleteTaskController from "../task/useCases/deleteTask";
 import listTasksByDoneController from "../task/useCases/listByDone";
 import updateTaskController from "../task/useCases/updateTask";
 import { ensureAuthenticated } from "../plugin/ensureAuthenticated";
+import { ensureAdmin } from "../../src/plugin/ensureAdmin";
 
 
 export async function tasksRoutes(app: any, opts: any, done: any) {
@@ -13,7 +14,7 @@ export async function tasksRoutes(app: any, opts: any, done: any) {
     });
 
 
-    app.post('/',{preHandler: ensureAuthenticated},async (request: any, reply: any) => {
+    app.post('/',{preHandler: [ensureAuthenticated,ensureAdmin]},async (request: any, reply: any) => {
         return createTasksController().handle(request, reply)
     });
 
@@ -22,7 +23,7 @@ export async function tasksRoutes(app: any, opts: any, done: any) {
         return deleteTaskController().handle(request, reply)
     });
 
-    app.get('/:done', async (request: any, reply: any) => {
+    app.get('/order', async (request: any, reply: any) => {
         return listTasksByDoneController().handle(request, reply)
     });
 

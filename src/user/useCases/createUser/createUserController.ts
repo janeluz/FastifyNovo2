@@ -1,22 +1,14 @@
 import { CreateUserUseCase } from './createUserUseCase.ts';
-import { z } from 'zod';
+import { addUser } from '../../../../src/plugin/validationUser';
 
 class CreateUserController {
-  constructor(private createuserUseCase: CreateUserUseCase){}
+  constructor(private createUserUseCase: CreateUserUseCase){}
  
    async handle(request: any, reply:any): Promise<void> {
-    const addUser = z.object({
-      name: z.string().min(3),
-      email: z.string().email(),
-      password: z.string().min(6),
-      confirmPassword: z.string().min(6),
-      avatar: z.string(),
-      isAdmin: z.boolean(),
-      departament: z.enum(['development','IA','RPA'])
-    });
-    const {name,email,password,confirmPassword,avatar,isAdmin,departament} = addUser.parse(request.body);
+
+    const {name,email,password,confirmPassword,isAdmin,departament} = addUser.parse(request.body);
       try{
-        const newUser = await this.createuserUseCase.execute({name, email,password,confirmPassword,avatar,isAdmin,departament});
+        const newUser = await this.createUserUseCase.execute({name, email,password,confirmPassword,isAdmin,departament});
         return reply.code(201).send(newUser);
       } catch(error: any) {
     reply.code(400).send(error.message);

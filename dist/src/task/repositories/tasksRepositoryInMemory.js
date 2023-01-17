@@ -26,7 +26,7 @@ class TasksRepositoryInMemory {
     async listAllTask() {
         return this.tasks;
     }
-    findByDone(done) {
+    findByDone() {
         throw new Error("Method not implemented.");
     }
     findById(id) {

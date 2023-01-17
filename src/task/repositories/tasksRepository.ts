@@ -56,11 +56,11 @@ class TasksRepository implements ITasksRepository {
     const task = await (await client).query('SELECT * FROM users WHERE name = $1', [name])
        return task as any;
   }
-  async findByDone(done: boolean): Promise<Task> {
+  async findByDone(): Promise<Task[]> {
     const client = app.pg.connect();
 
-      const task= await (await client).query(`SELECT * FROM tasks WHERE done = $1`, [done]);
-      return task as any;
+      const {rows} = await (await client).query(`SELECT * FROM tasks  ORDER BY done `);
+      return rows as any;
     
   }
 async update(id: string, body: any): Promise<Task> {

@@ -43,7 +43,7 @@ class TasksRepositoryInMemory implements ITasksRepository {
     return this.tasks;
   }
 
-  findByDone(done: boolean): Promise<Task> {
+  findByDone(): Promise<Task[]> {
 
     throw new Error("Method not implemented.");
   }
@@ -52,10 +52,11 @@ class TasksRepositoryInMemory implements ITasksRepository {
     const task = this.tasks.find((task) => task.id === id);
     return task as any;
   }
-  deleteById(id: string): Promise<void> {
-    throw new Error("Method not implemented.");
-  }
+ 
+  async deleteById(id: string): Promise<void> {
+    await this.deleteById( id);
 
+  }
 
 }
 

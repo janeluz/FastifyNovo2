@@ -1,4 +1,4 @@
-import { IUsersRepository } from "src/user/dto/ICreateDTO";
+import { IUsersRepository } from "../../dto/ICreateDTO";
 interface IRequest {
     id: string;
     avatar_file: string;
@@ -6,6 +6,6 @@ interface IRequest {
 declare class UpdateUserAvatarUseCase {
     private usersRepository;
     constructor(usersRepository: IUsersRepository);
-    execute({ id, avatar_file }: IRequest): Promise<any>;
+    execute({ id, avatar_file }: IRequest): Promise<void>;
 }
 export { UpdateUserAvatarUseCase };

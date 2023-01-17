@@ -6,9 +6,9 @@ class ListTasksByDoneUseCase {
   constructor(
     private tasksRepository: ITasksRepository
   ) { }
-  async execute(done: boolean): Promise<Task> {
+  async execute(): Promise<Task[]> {
 
-    const tasksDone = this.tasksRepository.findByDone(done);
+    const tasksDone = this.tasksRepository.findByDone();
 
 
     return tasksDone;

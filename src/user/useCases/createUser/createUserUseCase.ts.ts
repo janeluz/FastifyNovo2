@@ -7,7 +7,7 @@ import { User } from "src/user/dto/userModel";
 class CreateUserUseCase {
   constructor(private usersRepository: IUsersRepository) { }
 
-  async execute({ name, email, password,confirmPassword,avatar, isAdmin, departament }: ICreateUserDTO): Promise<User> {
+  async execute({ name, email, password,confirmPassword,isAdmin, departament }: ICreateUserDTO): Promise<User> {
    
     const usersAlreadyExists = await this.usersRepository.findByEmail(email);
 
@@ -18,7 +18,7 @@ class CreateUserUseCase {
       throw new Error("Password does not match!");
     }
     const passwordHash = await hash(password, 8);
-    const user = this.usersRepository.create({ name, email, password: passwordHash, avatar, isAdmin, departament });
+    const user = this.usersRepository.create({ name, email, password: passwordHash,isAdmin, departament });
 
     return user;
 
