@@ -1,5 +1,5 @@
 import { UsersRepository } from "../../repositories/usersRepository";
-import { UpdateUserAvatarController } from "./updateUserAvatarController";
+import { UpdateUserAvatarController } from "../updateUserAvatar/UpdateUserAvatarController";
 import { UpdateUserAvatarUseCase } from "./updateUserAvatarUseCase";
 
 export default () => {

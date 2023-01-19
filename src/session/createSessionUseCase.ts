@@ -3,6 +3,10 @@ import auth from "../config/auth";
 import { sign } from "jsonwebtoken";
 import { UsersRepository } from "../user/repositories/usersRepository";
 
+interface IRequest{
+    email:string;
+    password:string;
+}
 
 interface IResponse {
     user: {
@@ -14,7 +18,7 @@ interface IResponse {
 }
 class CreateSessionUseCase {
     constructor(private usersRepository: UsersRepository) { }
-    async execute(email: string, password: string): Promise<IResponse> {
+    async execute({email, password }:IRequest): Promise<IResponse> {
         console.log("testeeeee", email, password)
         const user = await this.usersRepository.findByEmail(email);
         console.log("testeeeee2", user)

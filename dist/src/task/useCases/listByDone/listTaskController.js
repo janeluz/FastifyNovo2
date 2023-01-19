@@ -7,7 +7,8 @@ class ListTasksByDoneController {
         this.listTasksByDoneUseCase = listTasksByDoneUseCase;
     }
     async handle(request, reply) {
-        const task = await this.listTasksByDoneUseCase.execute();
+        const { created_at, updated_at } = request.body;
+        const task = await this.listTasksByDoneUseCase.execute(created_at, updated_at);
         reply.send(task);
     }
 }

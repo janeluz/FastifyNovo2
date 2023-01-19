@@ -6,8 +6,8 @@ class ListTasksByDoneUseCase {
     constructor(tasksRepository) {
         this.tasksRepository = tasksRepository;
     }
-    async execute() {
-        const tasksDone = this.tasksRepository.findByDone();
+    async execute(created_at, updated_at) {
+        const tasksDone = this.tasksRepository.findByDone(created_at, updated_at);
         return tasksDone;
     }
 }

@@ -12,7 +12,7 @@ class CreateSessionUseCase {
     constructor(usersRepository) {
         this.usersRepository = usersRepository;
     }
-    async execute(email, password) {
+    async execute({ email, password }) {
         console.log("testeeeee", email, password);
         const user = await this.usersRepository.findByEmail(email);
         console.log("testeeeee2", user);

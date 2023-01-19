@@ -43,7 +43,7 @@ class TasksRepositoryInMemory implements ITasksRepository {
     return this.tasks;
   }
 
-  findByDone(): Promise<Task[]> {
+  findByDone(created_at?:Date,updated_at?:Date,done?:boolean): Promise<Task[]> {
 
     throw new Error("Method not implemented.");
   }

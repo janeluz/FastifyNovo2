@@ -8,7 +8,9 @@ class UpdateUserAvatarController {
     }
     async handle(request, reply) {
         const { id } = request.user;
+        console.log("testeId", id);
         const avatar_file = request.file.filename;
+        console.log("avatar_file", request.file);
         const user = await this.updateUserAvatarUseCase.execute({
             id: id,
             avatar_file,

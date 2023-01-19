@@ -26,15 +26,15 @@ class TasksRepositoryInMemory {
     async listAllTask() {
         return this.tasks;
     }
-    findByDone() {
+    findByDone(created_at, updated_at, done) {
         throw new Error("Method not implemented.");
     }
     findById(id) {
         const task = this.tasks.find((task) => task.id === id);
         return task;
     }
-    deleteById(id) {
-        throw new Error("Method not implemented.");
+    async deleteById(id) {
+        await this.deleteById(id);
     }
 }
 exports.TasksRepositoryInMemory = TasksRepositoryInMemory;

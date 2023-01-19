@@ -7,7 +7,7 @@ declare class TasksRepository implements ITasksRepository {
     deleteById(id: string): Promise<void>;
     findById(id: string): Promise<Task>;
     findByName(name: string): Promise<Task>;
-    findByDone(): Promise<Task[]>;
+    findByDone(created_at?: Date, updated_at?: Date, done?: boolean): Promise<Task[]>;
     update(id: string, body: any): Promise<Task>;
 }
 export { TasksRepository };

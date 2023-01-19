@@ -1,7 +1,7 @@
 import { IUsersRepository } from "../../dto/ICreateDTO";
 interface IRequest {
-    id: string;
-    avatar_file: string;
+    id: any;
+    avatar_file: any;
 }
 declare class UpdateUserAvatarUseCase {
     private usersRepository;

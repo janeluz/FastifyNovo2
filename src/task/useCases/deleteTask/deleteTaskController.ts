@@ -8,7 +8,7 @@ class DeleteTaskController {
       try{
         const {id} = request.params;
      
-        const deleteUser = await this.deleteTaskUseCase.execute(id);
+         await this.deleteTaskUseCase.execute(id);
         return reply.code(201).send();
       } catch(error) {
      return reply.send(400);

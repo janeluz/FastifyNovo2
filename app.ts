@@ -1,9 +1,11 @@
 
 import Fastify, { FastifyInstance } from "fastify";
+import multipart from '@fastify/multipart';
 import fastifyPostgres from "@fastify/postgres";
 import { usersRoutes } from "./src/routes/userRoutes";
 import { loginRoutes } from "./src/routes/loginRoutes";
 import { tasksRoutes } from "./src/routes/tasksRoutes";
+import multer from "multer";
 
 
 const app: FastifyInstance = Fastify({ logger: true });
@@ -24,9 +26,6 @@ app.register(fastifyPostgres,{
 app.register(usersRoutes, { prefix: '/users' });
 app.register(loginRoutes, { prefix: '/login' });
 app.register(tasksRoutes, { prefix: '/tasks' });
-
-
-// app.register(contentParser);
 
 
 

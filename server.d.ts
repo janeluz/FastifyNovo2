@@ -5,10 +5,13 @@ declare module 'fastify'{
     interface Fastify {
         db: any;
     }
+    
+    
     interface FastifyRequest {
         user: {
-            id:string;
-            file:string;
+            id:any;
+            file:any;
+            filename:any
         }
         authorization:string;
        

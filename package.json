@@ -17,6 +17,7 @@
     "@fastify/autoload": "^5.6.0",
     "@fastify/jwt": "^6.5.0",
     "@fastify/middie": "^8.1.0",
+    "@fastify/multipart": "^7.4.0",
     "@fastify/postgres": "^5.1.0",
     "@fastify/swagger": "^8.1.0",
     "@types/bcryptjs": "^2.4.2",
@@ -34,7 +35,9 @@
     "fastify-plugin": "^4.3.0",
     "fastify-prettier": "^2.0.0",
     "fastify-zod": "^1.2.0",
+    "form-auto-content": "^3.0.0",
     "jsonwebtoken": "^9.0.0",
+    "moment": "^2.29.4",
     "nodemon": "^2.0.20",
     "pg": "^8.8.0",
     "postgrator": "^7.1.1",
@@ -44,6 +47,7 @@
     "uuidv4": "^6.2.13"
   },
   "devDependencies": {
+    "@types/multer": "^1.4.7",
     "@types/node": "^18.11.12",
     "@types/pg": "^8.6.5",
     "@types/supertest": "^2.0.12",

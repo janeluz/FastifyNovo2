@@ -35,10 +35,9 @@ class UsersRepository implements IUsersRepository {
 
   }
 
-  async create({ name, email, password, isAdmin, departament }: ICreateUserDTO): Promise<User> {
+  async create({ name, email, password, avatar,isAdmin, departament }: ICreateUserDTO): Promise<User> {
     const client = await app.pg.connect();
     const id = uuidv4();
-    const avatar = null;
     const created_at = new Date();
     const updated_at = new Date();
 

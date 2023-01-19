@@ -6,6 +6,7 @@ import createUserController from "../../src/user/useCases/createUser";
 import listUserByIdController from "../../src/user/useCases/listById";
 import updateUserController from "../../src/user/useCases/updateUser";
 import updateUserAvatarController from "../../src/user/useCases/updateUserAvatar";
+import fastifyMultipart from "@fastify/multipart";
 
 // import upload from "../../src/config/upload";
 
@@ -13,7 +14,7 @@ import updateUserAvatarController from "../../src/user/useCases/updateUserAvatar
 
 
 export async function usersRoutes(app:any,opts:any,done:any){
-    app.register(multer.contentParser);
+    app.register(multer.contentParser)
     const uploadAvatar = multer(upload.upload('./tmp/avatar'));
 
 app.get('/', async(request: any, reply: any) => {

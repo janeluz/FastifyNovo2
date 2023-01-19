@@ -3,6 +3,6 @@ import { User } from "src/user/dto/userModel";
 declare class CreateUserUseCase {
     private usersRepository;
     constructor(usersRepository: IUsersRepository);
-    execute({ name, email, password, confirmPassword, avatar, isAdmin, departament }: ICreateUserDTO): Promise<User>;
+    execute({ name, email, password, confirmPassword, isAdmin, departament }: ICreateUserDTO): Promise<User>;
 }
 export { CreateUserUseCase };

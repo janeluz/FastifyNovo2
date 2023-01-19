@@ -42,12 +42,28 @@ class TasksRepository {
     }
     async findByName(name) {
         const client = app_1.app.pg.connect();
-        const task = await (await client).query('SELECT * FROM users WHERE name = $1', [name]);
+        const task = await (await client).query('SELECT * FROM tasks WHERE name = $1', [name]);
         return task;
     }
-    async findByDone() {
+    async findByDone(created_at, updated_at, done) {
         const client = app_1.app.pg.connect();
-        const { rows } = await (await client).query(`SELECT * FROM tasks  ORDER BY done `);
+        // const  tasksQuery = await (await client).query('t').WHERE(
+        //   'available=: available', {available:true});
+        //   if(created_at){
+        //     tasksQuery.andWHERE('t.created_at =: created_at',{created_at});
+        //     if(updated_at){
+        //       tasksQuery.andWHERE('t.updated_at =:updated_at',{updated_at});
+        //       if(done) {
+        //         tasksQuery.andWHERE('t.done =: done',{done});
+        //       }
+        //       const tasks = await tasksQuery.getMany();
+        //       return tasks;
+        //       }
+        //     }
+        //   }
+        const { rows } = await (await client).query(`SELECT * FROM tasks 
+      WHERE created_at <= updated_at
+      ORDER BY done);`);
         return rows;
     }
     async update(id, body) {

@@ -1,15 +1,16 @@
 
-import { FastifyRequest } from "fastify";
+import { FastifyReply, FastifyRequest } from "fastify";
 import { UpdateUserAvatarUseCase } from "./updateUserAvatarUseCase";
-
 
 
 class UpdateUserAvatarController {
   constructor(private updateUserAvatarUseCase: UpdateUserAvatarUseCase) {}
   async handle(request:any, reply:any): Promise<Response> {
   
-    const {id } = request.user;
+    const {id}= request.user;
+    console.log("testeId", id);
     const avatar_file = request.file.filename;
+    console.log("avatar_file",request.file)
 
      const user = await this.updateUserAvatarUseCase.execute({
       id: id,

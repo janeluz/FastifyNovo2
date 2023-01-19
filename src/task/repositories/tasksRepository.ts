@@ -53,16 +53,33 @@ class TasksRepository implements ITasksRepository {
   }
    async findByName(name: string): Promise<Task> {
     const client = app.pg.connect();
-    const task = await (await client).query('SELECT * FROM users WHERE name = $1', [name])
+    const task = await (await client).query('SELECT * FROM tasks WHERE name = $1', [name])
        return task as any;
   }
-  async findByDone(): Promise<Task[]> {
+  async findByDone(created_at?:Date,updated_at?:Date,done?:boolean): Promise<Task[]> {
     const client = app.pg.connect();
+// const  tasksQuery = await (await client).query('t').WHERE(
+//   'available=: available', {available:true});
+//   if(created_at){
+//     tasksQuery.andWHERE('t.created_at =: created_at',{created_at});
+//     if(updated_at){
+//       tasksQuery.andWHERE('t.updated_at =:updated_at',{updated_at});
+//       if(done) {
+//         tasksQuery.andWHERE('t.done =: done',{done});
+//       }
+//       const tasks = await tasksQuery.getMany();
+//       return tasks;
+        
+//       }
+//     }
+//   }
 
-      const {rows} = await (await client).query(`SELECT * FROM tasks  ORDER BY done `);
+      const {rows} = await (await client).query(`SELECT * FROM tasks 
+      WHERE created_at <= updated_at
+      ORDER BY done);`)
       return rows as any;
-    
-  }
+}
+
 async update(id: string, body: any): Promise<Task> {
     const client = await app.pg.connect();
     const updated_at = new Date();

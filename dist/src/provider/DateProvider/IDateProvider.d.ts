@@ -1,10 +1,10 @@
 interface IDateProvider {
-    compareInHours(start_date: Date, stop_date: Date): number;
+    compareInHours(created_at: Date, updated_at: Date): number;
     convertToUTC(date: Date): string;
     dateNow(): Date;
-    compareInDays(start_date: Date, stop_date: Date): number;
+    compareInDays(created_at: Date, updated_at: Date): number;
     addDays(days: number): Date;
     addHours(hours: number): Date;
-    compareIfBefore(start_date: Date, stop_date: Date): boolean;
+    compareIfBefore(created_at: Date, updated_at: Date): boolean;
 }
 export { IDateProvider };

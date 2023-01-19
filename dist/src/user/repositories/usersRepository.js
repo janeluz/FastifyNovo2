@@ -27,10 +27,9 @@ class UsersRepository {
         const { rows } = await client.query('SELECT * FROM users where id = $1', [id]);
         return rows;
     }
-    async create({ name, email, password, isAdmin, departament }) {
+    async create({ name, email, password, avatar, isAdmin, departament }) {
         const client = await app_1.app.pg.connect();
         const id = (0, uuid_1.v4)();
-        const avatar = null;
         const created_at = new Date();
         const updated_at = new Date();
         const query = (`INSERT INTO users(id,name,email,password,avatar,isAdmin,departament,created_at,updated_at)

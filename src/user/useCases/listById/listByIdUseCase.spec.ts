@@ -1,4 +1,4 @@
-import { UsersRepository } from "src/user/repositories/usersRepository";
+import { UsersRepository } from "../../../../src/user/repositories/usersRepository";
 import { User } from "src/user/dto/userModel";
 
 

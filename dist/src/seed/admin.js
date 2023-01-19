@@ -11,4 +11,3 @@ async function create() {
     values('${id}', 'Jane', 'admin@gmail.com', '${password}', 'avatar', true, 'development', '${new Date()})', '${new Date()})'`);
     (await client).release();
 }
-create().then(() => console.log("User admin created!"));

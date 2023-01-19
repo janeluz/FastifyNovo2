@@ -1,4 +1,8 @@
 import { UsersRepository } from "../user/repositories/usersRepository";
+interface IRequest {
+    email: string;
+    password: string;
+}
 interface IResponse {
     user: {
         name: string;
@@ -9,6 +13,6 @@ interface IResponse {
 declare class CreateSessionUseCase {
     private usersRepository;
     constructor(usersRepository: UsersRepository);
-    execute(email: string, password: string): Promise<IResponse>;
+    execute({ email, password }: IRequest): Promise<IResponse>;
 }
 export { CreateSessionUseCase };
