@@ -1,13 +1,11 @@
-import multer from "fastify-multer";
-import crypto from "crypto";
+import multer from "multer";
 import { resolve } from "path";
-
-
+import crypto from 'crypto';
 
 export default {
   upload(folder:string){
 
-    return{
+   return{
 
   storage: multer.diskStorage({
     destination: resolve(__dirname, '..', '..', folder),
@@ -18,19 +16,10 @@ export default {
       const fileName = `${fileHash}-${file.originalname}`;
       console.log('testemulterrr', fileName)
       console.log('testemulterrr222', null,fileName)
-      return callback(null,fileName);
-      
-    },
-  }),
+    return  callback(null,fileName)
+     
+      },
+},
+  )}
 }
-  }
 }
-
-// import Fastify from 'fastify';
-// import { Multipart } from '@fastify/multipart';
-// import fs from 'fs';
-// import util from 'util'
-// import { pipeline } from 'stream';
-
-// const pump = util.promisify(pipeline)
-

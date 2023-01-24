@@ -56,27 +56,11 @@ class TasksRepository implements ITasksRepository {
     const task = await (await client).query('SELECT * FROM tasks WHERE name = $1', [name])
        return task as any;
   }
-  async findByDone(created_at?:Date,updated_at?:Date,done?:boolean): Promise<Task[]> {
+  async findByDone(created_at:Date): Promise<Task> {
     const client = app.pg.connect();
-// const  tasksQuery = await (await client).query('t').WHERE(
-//   'available=: available', {available:true});
-//   if(created_at){
-//     tasksQuery.andWHERE('t.created_at =: created_at',{created_at});
-//     if(updated_at){
-//       tasksQuery.andWHERE('t.updated_at =:updated_at',{updated_at});
-//       if(done) {
-//         tasksQuery.andWHERE('t.done =: done',{done});
-//       }
-//       const tasks = await tasksQuery.getMany();
-//       return tasks;
-        
-//       }
-//     }
-//   }
 
       const {rows} = await (await client).query(`SELECT * FROM tasks 
-      WHERE created_at <= updated_at
-      ORDER BY done);`)
+      WHERE done = true`)
       return rows as any;
 }
 

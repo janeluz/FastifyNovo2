@@ -23,7 +23,7 @@ export async function tasksRoutes(app: any, opts: any, done: any) {
         return deleteTaskController().handle(request, reply)
     });
 
-    app.get('/order', async (request: any, reply: any) => {
+    app.get('/:created', async (request: any, reply: any) => {
         return listTasksByDoneController().handle(request, reply)
     });
 

@@ -15,7 +15,7 @@ import fastifyMultipart from "@fastify/multipart";
 
 export async function usersRoutes(app:any,opts:any,done:any){
     app.register(multer.contentParser)
-    const uploadAvatar = multer(upload.upload('./tmp/avatar'));
+    const uploadAvatar = multer()
 
 app.get('/', async(request: any, reply: any) => {
     return listUserController().handle(request,reply);
