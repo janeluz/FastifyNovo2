@@ -57,5 +57,14 @@ class UsersRepository {
         const user = await client.query(query, values);
         return user;
     }
+    async updateAvatar(id, body) {
+        const client = await app_1.app.pg.connect();
+        const updated_at = new Date();
+        const query = (`UPDATE users SET avatar = $1,updated_at = $2
+            WHERE id = $3`);
+        const values = [body.avatar, updated_at, id];
+        const userAvatar = await client.query(query, values);
+        return userAvatar;
+    }
 }
 exports.UsersRepository = UsersRepository;

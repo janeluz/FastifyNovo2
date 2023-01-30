@@ -1,8 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersRepositoryInMemory = void 0;
-const userModel_1 = require("../dto/userModel");
+const userModel_1 = require("../entities/userModel");
 class UsersRepositoryInMemory {
+    updateAvatar(id, body) {
+        throw new Error("Method not implemented.");
+    }
     users = [];
     async create({ name, email, password, avatar, isAdmin, departament, }) {
         const user = new userModel_1.User(name, email, password, avatar, isAdmin, departament);

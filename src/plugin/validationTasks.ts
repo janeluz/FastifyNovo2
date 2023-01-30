@@ -6,4 +6,5 @@ export const addTask = z.object({
     user_id:z.string().uuid(),
     description: z.string().min(10),
     done: z.boolean(),
+    total: z.number(),
   });

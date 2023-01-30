@@ -1,6 +1,7 @@
-import { User } from "../dto/userModel";
+import { User } from "../entities/userModel";
 import { ICreateUserDTO, IUsersRepository } from "../dto/ICreateDTO";
 declare class UsersRepositoryInMemory implements IUsersRepository {
+    updateAvatar(id: string, body: any): Promise<User>;
     users: User[];
     create({ name, email, password, avatar, isAdmin, departament, }: ICreateUserDTO): Promise<User>;
     findByEmail(email: string): Promise<User>;

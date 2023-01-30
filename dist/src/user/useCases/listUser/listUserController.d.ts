@@ -1,4 +1,4 @@
-import { User } from "src/user/dto/userModel";
+import { User } from "src/user/entities/userModel";
 import { ListUsersUseCase } from "./listUsersUseCase";
 declare class ListUserController {
     private listUsersUseCase;

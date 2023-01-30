@@ -1,7 +1,7 @@
 import { app } from "../../../app";
 import { v4 as uuidv4 } from 'uuid';
 import { ICreateUserDTO, IUsersRepository } from "../dto/ICreateDTO";
-import { User } from "../dto/userModel";
+import { User } from "../entities/userModel";
 
 
 class UsersRepository implements IUsersRepository {
@@ -76,7 +76,17 @@ class UsersRepository implements IUsersRepository {
     return user as any;
 
   }
-}
+  async updateAvatar(id: string, body:any): Promise<User> {
+    const client = await app.pg.connect();
+    const updated_at = new Date();
+    const query = (`UPDATE users SET avatar = $1,updated_at = $2
+            WHERE id = $3`)
+    const values = [body.avatar, updated_at, id]
 
+    const userAvatar = await client.query(query, values)
+    return userAvatar as any;
+
+}
+}
 
 export { UsersRepository };

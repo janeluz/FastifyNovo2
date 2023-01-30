@@ -7,4 +7,5 @@ exports.addTask = zod_1.z.object({
     user_id: zod_1.z.string().uuid(),
     description: zod_1.z.string().min(10),
     done: zod_1.z.boolean(),
+    total: zod_1.z.number(),
 });

@@ -1,5 +1,5 @@
 import { UsersRepository } from "../../../../src/user/repositories/usersRepository";
-import { User } from "src/user/dto/userModel";
+import { User } from "src/user/entities/userModel";
 
 
 describe('List User By Id', () => {

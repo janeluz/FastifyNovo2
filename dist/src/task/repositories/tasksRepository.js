@@ -16,14 +16,17 @@ class TasksRepository {
             throw new Error('User not found!!');
         }
     }
-    async create({ name, user_id, description, done }) {
+    async create({ name, user_id, description, total }) {
         const client = await app_1.app.pg.connect();
         const id = (0, uuid_1.v4)();
+        const done = false;
+        const start_task = new Date();
+        const end_task = new Date();
         const created_at = new Date();
         const updated_at = new Date();
-        const query = (`INSERT INTO tasks(id,name, user_id,description,done,created_at,updated_at)
-          VALUES($1,$2,$3,$4,$5,$6,$7)`);
-        const values = [id, name, user_id, description, done, created_at, updated_at];
+        const query = (`INSERT INTO tasks(id,name, user_id,description,done,start_task,end_task,total,created_at,updated_at)
+          VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)`);
+        const values = [id, name, user_id, description, done, start_task, end_task, total, created_at, updated_at];
         const task = await client.query(query, values);
         return task;
     }
@@ -45,25 +48,10 @@ class TasksRepository {
         const task = await (await client).query('SELECT * FROM tasks WHERE name = $1', [name]);
         return task;
     }
-    async findByDone(created_at, updated_at, done) {
+    async findByDone(start_task) {
         const client = app_1.app.pg.connect();
-        // const  tasksQuery = await (await client).query('t').WHERE(
-        //   'available=: available', {available:true});
-        //   if(created_at){
-        //     tasksQuery.andWHERE('t.created_at =: created_at',{created_at});
-        //     if(updated_at){
-        //       tasksQuery.andWHERE('t.updated_at =:updated_at',{updated_at});
-        //       if(done) {
-        //         tasksQuery.andWHERE('t.done =: done',{done});
-        //       }
-        //       const tasks = await tasksQuery.getMany();
-        //       return tasks;
-        //       }
-        //     }
-        //   }
         const { rows } = await (await client).query(`SELECT * FROM tasks 
-      WHERE created_at <= updated_at
-      ORDER BY done);`);
+      WHERE start_task = $1`, [start_task]);
         return rows;
     }
     async update(id, body) {

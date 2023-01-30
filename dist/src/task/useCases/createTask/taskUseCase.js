@@ -6,12 +6,12 @@ class CreateTaskUseCase {
     constructor(taskRepository) {
         this.taskRepository = taskRepository;
     }
-    async execute({ name, user_id, description, done }) {
+    async execute({ name, user_id, description, total }) {
         const taskAlreadyExists = this.taskRepository.findByName(name);
         if (await taskAlreadyExists) {
             new Error(" task Already exists!");
         }
-        const task = this.taskRepository.create({ name, user_id, description, done });
+        const task = this.taskRepository.create({ name, user_id, description, total });
         return task;
     }
 }

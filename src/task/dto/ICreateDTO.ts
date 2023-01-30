@@ -5,7 +5,10 @@ interface ICreateTaskDTO {
   name: string;
   user_id: string;
   description: string;
-  done: boolean;
+  done?: boolean;
+  start_task?: Date;
+  end_task?:Date;
+  total:number;
   created_at?: Date;
   updated_at?: Date;
 
@@ -14,7 +17,7 @@ interface ICreateTaskDTO {
 
 interface ITasksRepository {
   findByName(name: string): Promise<Task>;
-  create({ name, user_id, done, description, created_at, updated_at }: ICreateTaskDTO): Promise<Task>;
+  create({ name, user_id,description,done,start_task,end_task,total }: ICreateTaskDTO): Promise<Task>;
   listAllTask(): Promise<Task[]>;
   findById(id: string): Promise<Task>;
   deleteById(id: string): Promise<void>;

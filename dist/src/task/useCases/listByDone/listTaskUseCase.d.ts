@@ -3,6 +3,6 @@ import { Task } from "../../entities/task";
 declare class ListTasksByDoneUseCase {
     private tasksRepository;
     constructor(tasksRepository: ITasksRepository);
-    execute(created_at: Date, updated_at: Date): Promise<Task[]>;
+    execute(created_at: Date): Promise<Task>;
 }
 export { ListTasksByDoneUseCase };

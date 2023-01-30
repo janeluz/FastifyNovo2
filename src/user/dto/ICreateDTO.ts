@@ -1,4 +1,4 @@
-import { User } from "./userModel";
+import { User } from "../entities/userModel";
 
 
 interface ICreateUserDTO {
@@ -18,6 +18,7 @@ interface ICreateUserDTO {
 
 interface IUsersRepository {
   update(id: string, body: any):Promise<User>;
+  updateAvatar(id: string, body: any):Promise<User>;
   findById(id: string): Promise<User>;
   findByEmail(email: string):Promise<User>;
   create({name, email,password,isAdmin,departament}: ICreateUserDTO): Promise<User>;

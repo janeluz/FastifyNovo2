@@ -1,11 +1,11 @@
 import { IUsersRepository } from "../../dto/ICreateDTO";
 interface IRequest {
     id: any;
-    avatar_file: any;
+    avatar: any;
 }
 declare class UpdateUserAvatarUseCase {
     private usersRepository;
     constructor(usersRepository: IUsersRepository);
-    execute({ id, avatar_file }: IRequest): Promise<void>;
+    execute({ id, avatar }: IRequest): Promise<void>;
 }
 export { UpdateUserAvatarUseCase };

@@ -8,10 +8,10 @@ const dayjs_1 = __importDefault(require("dayjs"));
 const utc_1 = __importDefault(require("dayjs/plugin/utc"));
 dayjs_1.default.extend(utc_1.default);
 class DayjsDateProvider {
-    compareInHours(created_at, stop_date) {
-        const stop_date_utc = this.convertToUTC(stop_date);
-        const created_at_utc = this.convertToUTC(created_at);
-        return (0, dayjs_1.default)(stop_date_utc).diff(created_at_utc, "hours");
+    compareInHours(start_task, end_task) {
+        const end_task_utc = this.convertToUTC(end_task);
+        const start_task_utc = this.convertToUTC(start_task);
+        return (0, dayjs_1.default)(end_task_utc).diff(start_task_utc, "hours");
     }
     convertToUTC(date) {
         return (0, dayjs_1.default)(date).utc().local().format();
@@ -19,10 +19,10 @@ class DayjsDateProvider {
     dateNow() {
         return (0, dayjs_1.default)().toDate();
     }
-    compareInDays(created_at, updated_at) {
-        const updated_at_utc = this.convertToUTC(updated_at);
-        const created_at_utc = this.convertToUTC(created_at);
-        return (0, dayjs_1.default)(updated_at_utc).diff(created_at_utc, "days");
+    compareInDays(start_task, end_task) {
+        const end_task_utc = this.convertToUTC(end_task);
+        const start_task_utc = this.convertToUTC(start_task);
+        return (0, dayjs_1.default)(end_task_utc).diff(start_task_utc, "days");
     }
     addDays(days) {
         return (0, dayjs_1.default)().add(days, "days").toDate();
@@ -30,8 +30,8 @@ class DayjsDateProvider {
     addHours(hours) {
         return (0, dayjs_1.default)().add(hours, "hour").toDate();
     }
-    compareIfBefore(created_at, updated_at) {
-        return (0, dayjs_1.default)(created_at).isBefore(updated_at);
+    compareIfBefore(start_task, end_task) {
+        return (0, dayjs_1.default)(start_task).isBefore(end_task);
     }
 }
 exports.DayjsDateProvider = DayjsDateProvider;

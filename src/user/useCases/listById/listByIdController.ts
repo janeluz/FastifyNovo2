@@ -1,5 +1,5 @@
 
-import { User } from "src/user/dto/userModel";
+import { User } from "src/user/entities/userModel";
 import { ListUserByIdUseCase } from "./listByIdUseCase";
 
 

@@ -1,13 +1,13 @@
 
 
 interface IDateProvider {
-    compareInHours(created_at:Date,updated_at: Date): number;
+    compareInHours(start_task:Date,end_task: Date): number;
     convertToUTC(date: Date): string;
     dateNow(): Date;
-    compareInDays(created_at:Date,updated_at: Date): number;
+    compareInDays(start_task:Date,end_task :Date): number;
     addDays(days: number): Date;
     addHours(hours: number): Date;
-    compareIfBefore(created_at :Date,updated_at: Date): boolean;
+    compareIfBefore(start_task :Date,end_task: Date): boolean;
   }
   
   export { IDateProvider };

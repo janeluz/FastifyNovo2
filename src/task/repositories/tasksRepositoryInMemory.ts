@@ -13,19 +13,25 @@ class TasksRepositoryInMemory implements ITasksRepository {
     name,
     user_id,
     description,
-    done
+    done:boolean,
+    total
+   
+    
 
 
 
   }: ICreateTaskDTO): Promise<Task> {
 
-    const task = new Task(name, user_id, description, done);
+    const task = new Task(name, user_id, description,false, total);
 
     Object.assign(task, {
       name,
       user_id,
-      done: false,
       description,
+      done:false,
+      start_task: new Date(),
+      end_task: new Date(),
+      total,
       created_at: new Date(),
       updated_at: new Date(),
 

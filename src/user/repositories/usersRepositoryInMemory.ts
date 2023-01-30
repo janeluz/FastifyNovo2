@@ -1,9 +1,12 @@
-import { User } from "../dto/userModel";
+import { User } from "../entities/userModel";
 import { ICreateUserDTO, IUsersRepository } from "../dto/ICreateDTO";
 
 
 
 class UsersRepositoryInMemory implements IUsersRepository {
+  updateAvatar(id: string, body: any): Promise<User> {
+    throw new Error("Method not implemented.");
+  }
 
   users: User[] = [];
 

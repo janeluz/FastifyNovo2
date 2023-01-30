@@ -1,6 +1,6 @@
 import { hash } from "bcryptjs";
 import { ICreateUserDTO, IUsersRepository } from "src/user/dto/ICreateDTO";
-import { User } from "src/user/dto/userModel";
+import { User } from "src/user/entities/userModel";
 
 
 

@@ -18,6 +18,9 @@ describe('Create Task', () => {
       user_id: "teste@TESTE",
       description: "tarefa final curso",
       done: false,
+      start_task: new Date(),
+      end_task: new Date(),
+      total: 2,
       created_at: new Date(),
       updated_at: new Date()
     });

@@ -1,5 +1,5 @@
 import { IUsersRepository } from "../../../../src/user/dto/ICreateDTO";
-import { User } from "../../../../src/user/dto/userModel";
+import { User } from "../../entities/userModel";
 declare class UpdateUserUseCase {
     private usersRepository;
     constructor(usersRepository: IUsersRepository);

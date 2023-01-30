@@ -18,18 +18,20 @@ class TasksRepository implements ITasksRepository {
       throw new Error('User not found!!')
     }
   }
-  async create({ name, user_id, description, done }: ICreateTaskDTO): Promise<Task> {
+  async create({ name, user_id, description,done,total}: ICreateTaskDTO): Promise<Task> {
     const client = await app.pg.connect();
     const id = uuidv4();
+    const start_task = new Date();
+    const end_task = new Date();
     const created_at = new Date();
     const updated_at = new Date();
 
-    const query =(`INSERT INTO tasks(id,name, user_id,description,done,created_at,updated_at)
-          VALUES($1,$2,$3,$4,$5,$6,$7)`)
-      const values= [id, name, user_id, description, done, created_at, updated_at]
+    const query =(`INSERT INTO tasks(id,name, user_id,description,done,start_task,end_task,total,created_at,updated_at)
+          VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)`)
+      const values= [id, name, user_id, description, done,start_task,end_task,total, created_at, updated_at]
 
       const task = await client.query(query,values)
-      
+      console.log("repositories",task)
         return task as any;
 
 
@@ -56,11 +58,11 @@ class TasksRepository implements ITasksRepository {
     const task = await (await client).query('SELECT * FROM tasks WHERE name = $1', [name])
        return task as any;
   }
-  async findByDone(created_at:Date): Promise<Task> {
+  async findByDone(start_task:Date): Promise<Task> {
     const client = app.pg.connect();
 
       const {rows} = await (await client).query(`SELECT * FROM tasks 
-      WHERE done = true`)
+      WHERE start_task = $1`,[start_task])
       return rows as any;
 }
 
