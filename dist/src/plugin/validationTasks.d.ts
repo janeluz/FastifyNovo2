@@ -8,13 +8,13 @@ export declare const addTask: z.ZodObject<{
 }, "strip", z.ZodTypeAny, {
     name: string;
     user_id: string;
-    done: boolean;
     description: string;
+    done: boolean;
     total: number;
 }, {
     name: string;
     user_id: string;
-    done: boolean;
     description: string;
+    done: boolean;
     total: number;
 }>;

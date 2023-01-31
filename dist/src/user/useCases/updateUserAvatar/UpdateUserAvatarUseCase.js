@@ -8,16 +8,13 @@ class UpdateUserAvatarUseCase {
         this.usersRepository = usersRepository;
     }
     async execute({ id, avatar }) {
-        console.log("avatarUsecase", avatar);
-        console.log("avatarUsecase", avatar.filename);
+        console.log("debug usecase avatar", avatar);
+        console.log("debug usecase id", id);
         const user = await this.usersRepository.findById(id);
-        console.log("testeUseCase222", id);
         if (user.avatar) {
-            console.log("testeeeUseCae11", user.avatar);
             await (0, file_1.deleteFile)(`./temp/avatar/${user.avatar}`);
         }
         user.avatar = avatar;
-        console.log("testeeeUseCae2", avatar);
         await this.usersRepository.updateAvatar(id, avatar);
     }
 }

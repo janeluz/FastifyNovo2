@@ -26,7 +26,25 @@ app.register(fastifyPostgres,{
  
 // app.register(indexRoutes);
 // app.register(ensureAuthenticated);
-
+app.post('/init-table',async()=> {
+    const createTable = `
+    CREATE TABLE IF NOT EXISTS users (
+            id uuid PRIMARY KEY,
+            name varchar(255) NOT NULL,
+            email varchar(255) UNIQUE NOT NULL,
+            password varchar(255) NOT NULL,
+            avatar varchar(255)  NULL,
+            isAdmin boolean NOT NULL DEFAULT FALSE,
+            departament varchar(255) NOT NULL
+            created_at timestamp NOT NULL,
+            updated_at timestamp NOT NULL);`;
+      
+            return app.pg.transact(async(client) => {
+              const result = await client.query(createTable)
+              return result
+            })
+          }
+    )
 
 app.register(usersRoutes, { prefix: '/users' });
 app.register(loginRoutes, { prefix: '/login' });

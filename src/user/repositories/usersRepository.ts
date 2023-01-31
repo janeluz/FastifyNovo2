@@ -8,7 +8,7 @@ class UsersRepository implements IUsersRepository {
 
   constructor() { }
 
-  // async  createTable () {
+  // async createTable (){
   //   const client = await app.pg.connect();
   //   const query = `CREATE TABLE IF NOT EXISTS users (
   //     id uuid PRIMARY KEY,

@@ -15,7 +15,7 @@ describe('Create User', () => {
       name: 'testee',
       email: 'teste@gmail.com',
       password: '1234565',
-      confirmPassword: '123456',
+      confirmPassword: '1234565',
       isAdmin: false,
       departament: 'development',
       avatar: 'avatar',

@@ -6,11 +6,14 @@ class ListTasksByDoneUseCase {
   constructor(
     private tasksRepository: ITasksRepository
   ) { }
-  async execute(created_at:Date): Promise<Task> {
+  async execute(start_task:Date): Promise<Task> {
 
-    const tasksDone = this.tasksRepository.findByDone(created_at);
+    const tasksDone = this.tasksRepository.findByDone(start_task);
      return tasksDone;
 
+    //  if(start_task < end_task){
+    //   done = true
+    //  }
     
 
   }

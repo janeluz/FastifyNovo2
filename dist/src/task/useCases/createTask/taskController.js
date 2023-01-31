@@ -9,8 +9,9 @@ class CreateTaskController {
     }
     async handle(request, reply) {
         try {
-            const { name, user_id, description, total } = validationTasks_1.addTask.parse(request.body);
-            const task = await this.createTaskUseCase.execute({ name, user_id, description, total });
+            const { name, user_id, description, done, total } = validationTasks_1.addTask.parse(request.body);
+            const task = await this.createTaskUseCase.execute({ name, user_id, description, done, total });
+            console.log("Controller", task);
             return reply.code(201).send("task created with success!");
         }
         catch (error) {

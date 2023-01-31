@@ -12,11 +12,11 @@ const createUser_1 = __importDefault(require("../../src/user/useCases/createUser
 const listById_1 = __importDefault(require("../../src/user/useCases/listById"));
 const updateUser_1 = __importDefault(require("../../src/user/useCases/updateUser"));
 const updateUserAvatar_1 = __importDefault(require("../../src/user/useCases/updateUserAvatar"));
+// import upload from "../plugin/upload2";
 // import upload from "../../src/config/upload";
 // import { ensureAuthenticated } from "../../src/plugin/ensureAuthenticated";
 const uploadAvatar = (0, fastify_multer_1.default)(upload_1.default);
 async function usersRoutes(app, opts, done) {
-    app.register(fastify_multer_1.default.contentParser);
     app.get('/', async (request, reply) => {
         return (0, listUser_1.default)().handle(request, reply);
     });
@@ -29,7 +29,12 @@ async function usersRoutes(app, opts, done) {
     app.put('/:id', async (request, reply) => {
         return (0, updateUser_1.default)().handle(request, reply);
     });
-    app.patch('/avatar', { preHandler: [ensureAuthenticated_1.ensureAuthenticated, uploadAvatar.single('avatar')] }, async (request, reply) => {
+    app.patch('/avatar', {
+        preHandler: [
+            ensureAuthenticated_1.ensureAuthenticated,
+            uploadAvatar.single('avatar')
+        ]
+    }, async (request, reply) => {
         return (0, updateUserAvatar_1.default)().handle(request, reply);
     });
     done();

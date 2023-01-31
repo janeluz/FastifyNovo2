@@ -7,16 +7,14 @@ class UpdateUserAvatarController {
         this.updateUserAvatarUseCase = updateUserAvatarUseCase;
     }
     async handle(request, reply) {
-        console.log("requestController", request);
         const { id } = request.user;
-        console.log("testeId", id);
         const avatar = request.file;
-        console.log("avatar_file/filename", request.file);
+        console.log('debug avatar', avatar);
+        console.log("debug controller request.file", request.file);
         const user = await this.updateUserAvatarUseCase.execute({
             id: id,
             avatar,
         });
-        console.log('teste', user);
         return reply.code(204).send(user);
     }
 }

@@ -68,10 +68,11 @@ class TasksRepository implements ITasksRepository {
 
 async update(id: string, body: any): Promise<Task> {
     const client = await app.pg.connect();
+    const end_task = new Date();
     const updated_at = new Date();
-    const query = (`UPDATE tasks SET name = $1, description = $2, done = $3, updated_at = $4
-          WHERE id = $5`)
-     const  values = [body.name, body.description, body.done, updated_at, id]
+    const query = (`UPDATE tasks SET name = $1, description = $2, done = $3,end_task =$4, updated_at = $5
+          WHERE id = $6`)
+     const  values = [body.name, body.description, body.done,end_task, updated_at, id]
 
       const task = await client.query(query, values) 
       return task as any;

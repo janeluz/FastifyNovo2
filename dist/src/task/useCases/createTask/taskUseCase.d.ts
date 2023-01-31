@@ -3,6 +3,6 @@ import { Task } from "../../entities/task";
 declare class CreateTaskUseCase {
     private taskRepository;
     constructor(taskRepository: ITasksRepository);
-    execute({ name, user_id, description, total }: ICreateTaskDTO): Promise<Task>;
+    execute({ name, user_id, description, done, total }: ICreateTaskDTO): Promise<Task>;
 }
 export { CreateTaskUseCase };

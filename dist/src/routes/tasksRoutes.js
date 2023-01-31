@@ -20,7 +20,7 @@ async function tasksRoutes(app, opts, done) {
     app.delete('/:id', { preHandler: ensureAuthenticated_1.ensureAuthenticated }, async (request, reply) => {
         return (0, deleteTask_1.default)().handle(request, reply);
     });
-    app.get('/:created', async (request, reply) => {
+    app.get('/:start_task', async (request, reply) => {
         return (0, listByDone_1.default)().handle(request, reply);
     });
     app.put('/:id', { preHandler: ensureAuthenticated_1.ensureAuthenticated }, async (request, reply) => {

@@ -5,7 +5,7 @@ const app_1 = require("../../../app");
 const uuid_1 = require("uuid");
 class UsersRepository {
     constructor() { }
-    // async  createTable () {
+    // async createTable (){
     //   const client = await app.pg.connect();
     //   const query = `CREATE TABLE IF NOT EXISTS users (
     //     id uuid PRIMARY KEY,

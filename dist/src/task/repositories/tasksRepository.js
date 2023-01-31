@@ -16,10 +16,9 @@ class TasksRepository {
             throw new Error('User not found!!');
         }
     }
-    async create({ name, user_id, description, total }) {
+    async create({ name, user_id, description, done, total }) {
         const client = await app_1.app.pg.connect();
         const id = (0, uuid_1.v4)();
-        const done = false;
         const start_task = new Date();
         const end_task = new Date();
         const created_at = new Date();
@@ -28,6 +27,7 @@ class TasksRepository {
           VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)`);
         const values = [id, name, user_id, description, done, start_task, end_task, total, created_at, updated_at];
         const task = await client.query(query, values);
+        console.log("repositories", task);
         return task;
     }
     async deleteById(id) {
