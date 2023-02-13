@@ -1,0 +1,45 @@
+name: TesteAula
+on:
+  workflow_dispatch:
+  
+      jobs: 
+      build:
+      runs-on: ubuntu-latest
+      steps:
+      - name: Run a online script 
+        run: echo Hello, world!
+        
+        
+      deploy-dev:
+       runs-on: ubuntu-latest
+      enviroment:
+      - name: dev
+        url: 'jane.com'
+      needs: build
+    steps:
+      - name: Run a one -line script
+           run: echo Deploy Dev
+        
+
+    deploy-hmg:
+     runs-on: ubuntu-latest
+     enviroment:
+      - name: dev
+        url: 'jane.com'
+     needs: build
+     steps:
+      - name: Run a one -line script
+        run: echo Deploy Dev
+        
+        
+      
+     deploy-prod:
+      runs-on: ubuntu-latest
+      enviroment:
+       - name: dev
+         url: 'jane.com'
+      needs: build
+      steps:
+      - name: Run a one -line script
+        run: echo Deploy Dev
+        
